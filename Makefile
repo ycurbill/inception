@@ -6,7 +6,7 @@
 #    By: ycurbill <ycurbill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/06 14:35:08 by ycurbill          #+#    #+#              #
-#    Updated: 2023/03/06 15:12:15 by ycurbill         ###   ########.fr        #
+#    Updated: 2023/03/06 15:48:27 by ycurbill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,18 @@ NAME = inception
 
 all: ${NAME}
 
-${NAME} : build run
+${NAME} : build up
 
 build:
-	docker-compose -f ./srcs/docker-compose.yml up -d
+	docker-compose -f ./srcs/docker-compose.yml build
 
-run:
+up:
+	docker-compose -f ./srcs/docker-compose.yml up -d --force-recreate
+
+down:
+	docker-compose -f ./srcs/docker-compose.yml down -v
+
+clean:
+	docker image prune -a --force
 
 .PHONY: all
