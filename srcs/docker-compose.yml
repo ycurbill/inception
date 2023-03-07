@@ -2,8 +2,25 @@ version: '3'
 services:
   nginx:
     build: 
-      context: ./nginx
+      context: ./requirements/nginx
     image: nginx
     restart: always
+    volumes:
+      - wordpress:/var/www/localhost/
     ports:
       - "8000:443"
+#  wordpress:
+#    build: 
+#      context: ./wordpress
+#    image: wordpress
+#    restart: always
+#    ports:
+#      - ""
+
+volumes:
+  wordpress:
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   device: ./requirements/wordpress/volume/
+    #   o: bind

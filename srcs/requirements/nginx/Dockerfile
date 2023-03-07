@@ -2,7 +2,7 @@ FROM debian:buster
 
 # update: updates list of packages (e.g. nginx, apache, mariadb, openssl)
 RUN apt-get -y update && apt-get -y install nginx openssl
-RUN mkdir /var/www/localhost && touch /var/www/localhost/index.html && echo "Petit Chat" > /var/www/localhost/index.html
+RUN mkdir /var/www/localhost
 
 COPY ./config/sites-available/default /etc/nginx/sites-enabled/default
 
